@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IMGColorSwap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dark_mode" />
+</head>
+<body>
+  <div id="darkModeToggleContainer" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+    <button id="darkModeToggle" class="material-symbols-outlined">dark_mode</button>
+  </div>
+  <h1 class="site-title">IMGColorSwap</h1>
+  <p class="abbreviation-breakdown">Mcall's PNG Channel Swapper</p>
+  <div style="text-align:center; margin-bottom: 1em;">
+    <button id="toggleSynthMode" class="action-button">Synth Patch Mode</button>
+  </div>
+  <div class="controls-container">
+    <div class="card">
+      <label>Channel order:</label>
+      <div class="channel-row">
+        <select id="chan0" class="chan-select">
+          <option value="R">R</option>
+          <option value="G">G</option>
+          <option value="B">B</option>
+          <option value="A">A</option>
+        </select>
+        <select id="chan1" class="chan-select">
+          <option value="R">R</option>
+          <option value="G">G</option>
+          <option value="B">B</option>
+          <option value="A">A</option>
+        </select>
+        <select id="chan2" class="chan-select">
+          <option value="R">R</option>
+          <option value="G">G</option>
+          <option value="B">B</option>
+          <option value="A">A</option>
+        </select>
+        <select id="chan3" class="chan-select">
+          <option value="R">R</option>
+          <option value="G">G</option>
+          <option value="B">B</option>
+          <option value="A">A</option>
+        </select>
+      </div>
+      <label class="inline-label">
+        <input type="checkbox" id="recursive"> Recursive
+      </label>
+      <label>Folder path:
+        <input type="text" id="folderPath" placeholder="Path to folder">
+      </label>
+      <button id="buildCmdBtn" class="action-button">Build Command</button>
+      <div id="cmdOutput" class="cmd-output"></div>
+    </div>
+    <div class="card">
+      <label>Select PNG files:
+        <input type="file" id="fileInput" accept=".png" multiple>
+      </label>
+      <div id="previewArea"></div>
+    </div>
+  </div>
+  <div id="synthPatchContainer" style="display:none; margin: 2em 0;">
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 60px;">
+      <div id="synthInputs" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="synth-label">Inputs</div>
+        <div class="synth-jack" data-chan="R">R</div>
+        <div class="synth-jack" data-chan="G">G</div>
+        <div class="synth-jack" data-chan="B">B</div>
+        <div class="synth-jack" data-chan="A">A</div>
+      </div>
+      <svg id="synthPatchSVG" width="400" height="220" style="background:transparent; overflow:visible;"></svg>
+      <div id="synthOutputs" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="synth-label">Outputs</div>
+        <div class="synth-jack" data-chan="R">R</div>
+        <div class="synth-jack" data-chan="G">G</div>
+        <div class="synth-jack" data-chan="B">B</div>
+        <div class="synth-jack" data-chan="A">A</div>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+  </footer>
+  <script src="imgcs-web.js"></script>
+</body>
+</html>
