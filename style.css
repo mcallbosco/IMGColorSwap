@@ -20,6 +20,9 @@ body {
   margin-bottom: 1.5em;
   color: #666;
   font-size: 1.1em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .controls-container {
@@ -43,6 +46,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.2em;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .channel-row {
@@ -179,7 +184,9 @@ input[type="checkbox"] {
   border-radius: 5px;
   padding: 0.7em 1em;
   color: #333;
-  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 #previewArea {
@@ -235,7 +242,218 @@ input[type="checkbox"] {
 }
 
 #darkModeToggleContainer {
+  position: fixed;
+  top: 18px;
+  right: 18px;
   z-index: 1000;
+  background: none;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+}
+body.dark #darkModeToggleContainer {
+  background: none;
+  box-shadow: none;
+}
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1976d2;
+  padding: 0.18em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, outline 0.2s;
+  outline: none;
+  width: 2.2em;
+  height: 2.2em;
+  min-width: 0;
+  min-height: 0;
+  box-shadow: none;
+}
+#darkModeToggle:hover, #darkModeToggle:focus {
+  background: #e3eafc;
+  color: #125ea2;
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+body.dark #darkModeToggle {
+  color: #90caf9;
+  background: none;
+  box-shadow: none;
+}
+body.dark #darkModeToggle:hover, body.dark #darkModeToggle:focus {
+  background: #23272a;
+  color: #fff;
+  outline: 2px solid #90caf9;
+  outline-offset: 2px;
+}
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 1.7em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+/* Improved dark mode theming for the site */
+body.dark {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark .card {
+  background: #222222;
+  color: #e0e0e0;
+  box-shadow: 0 2px 12px #0006;
+}
+body.dark .cmd-output {
+  background: #23272a;
+  color: #e0e0e0;
+}
+body.dark .chan-input, body.dark input[type="text"], body.dark input[type="file"] {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+body.dark .chan-dropdown {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+body.dark #previewArea img {
+  background: #23272a;
+  border: 1px solid #444;
+}
+body.dark .site-footer {
+  background: #111;
+  color: #bbb;
+}
+body.dark .site-footer a {
+  color: #90caf9;
+}
+body.dark .download-icon-btn {
+  color: #90caf9;
+  box-shadow: 0 2px 8px #0006;
+}
+body.dark .download-icon-btn:hover, body.dark .download-icon-btn:focus {
+  background: #1565c0;
+  color: #fff;
+  box-shadow: 0 4px 16px #1565c088;
+}
+body.dark .chan-select {
+  background: #23272a;
+  color: #e0e0e0;
+  border: 1.5px solid #444;
+}
+body.dark .chan-select:focus {
+  border: 1.5px solid #90caf9;
+  background: #181a1b;
+}
+body.dark .site-title {
+  color: #fff;
+}
+body.dark .abbreviation-breakdown {
+  color: #ccc;
+}
+
+/* Synth Patch Mode Styles */
+.synth-label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.1em;
+}
+.synth-jack {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f5f7fa 60%, #e3eafc 100%);
+  color: #1976d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5em 0;
+  font-size: 1.1em;
+  border: 3px solid #1976d2;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  z-index: 1000;
+  box-shadow: 0 2px 8px #1976d222;
+}
+.synth-jack:hover {
+  border-color: #f39c12;
+  background: linear-gradient(145deg, #fffbe7 60%, #ffe0b2 100%);
+  color: #b26a00;
+  box-shadow: 0 4px 16px #f39c1233;
+}
+.synth-jack:active {
+  border-color: #3498db;
+  background: #e3eafc;
+  color: #1976d2;
+}
+/* Hide the default border when a cable is connected */
+.synth-jack.connected {
+  border-color: transparent;
+}
+body.dark .synth-jack {
+  background: #222;
+  color: #fff;
+  border: 3px solid #888;
+  box-shadow: none;
+}
+body.dark .synth-jack:hover {
+  background: #333;
+  border-color: #f39c12;
+  color: #fff;
+}
+body.dark .synth-jack:active {
+  background: #222;
+  border-color: #3498db;
+  color: #fff;
+}
+#synthPatchSVG {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.download-icon-btn {
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-size: 2.2em;
+  cursor: pointer;
+  vertical-align: middle;
+  padding: 0.18em 0.38em;
+  border-radius: 50%;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  outline: none;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #1976d222;
+  position: relative;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.download-icon-btn:hover, .download-icon-btn:focus {
+  background: #1976d2;
+  color: #fff;
+  box-shadow: 0 4px 16px #1976d244;
+  text-decoration: none;
+}
+body.dark .download-icon-btn {
+  color: #90caf9;
+  box-shadow: 0 2px 8px #0006;
+}
+body.dark .download-icon-btn:hover, body.dark .download-icon-btn:focus {
+  background: #1565c0;
+  color: #fff;
+  box-shadow: 0 4px 16px #1565c088;
 }
 
 @media (max-width: 700px) {
@@ -250,80 +468,4 @@ input[type="checkbox"] {
   .site-title {
     font-size: 1.4em;
   }
-}
-
-body.dark {
-  background: #181a1b;
-  color: #e0e0e0;
-}
-
-body.dark .card {
-  background: #23272a;
-  color: #e0e0e0;
-  box-shadow: 0 2px 12px #0006;
-}
-
-body.dark .cmd-output {
-  background: #23272a;
-  color: #e0e0e0;
-}
-
-body.dark .chan-input, body.dark input[type="text"], body.dark input[type="file"] {
-  background: #23272a;
-  color: #e0e0e0;
-  border: 1px solid #444;
-}
-
-body.dark .chan-dropdown {
-  background: #23272a;
-  color: #e0e0e0;
-  border: 1px solid #444;
-}
-
-body.dark #previewArea img {
-  background: #23272a;
-  border: 1px solid #444;
-}
-
-body.dark .site-footer {
-  background: #111;
-  color: #bbb;
-}
-
-body.dark .site-footer a {
-  color: #90caf9;
-}
-/* Synth Patch Mode Styles */
-.synth-label {
-  font-weight: bold;
-  margin-bottom: 0.5em;
-  letter-spacing: 0.1em;
-}
-.synth-jack {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #222;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0.5em 0;
-  font-size: 1.1em;
-  border: 3px solid #888;
-  cursor: pointer;
-  user-select: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-.synth-jack:hover {
-  border-color: #f39c12;
-  background: #333;
-}
-.synth-jack:active {
-  border-color: #3498db;
-  background: #222;
-}
-#synthPatchSVG {
-  pointer-events: none;
-  z-index: 0;
 }
