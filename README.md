@@ -1,9 +1,9 @@
 # Online Demo
 Check to see if this is what you need to fix your image [here](https://cswap.mcallbos.co)
 
-turns ![this](wrong.png) into ![this](upscaled_image.png)
-
-
+Turn this...           |  Into this...
+:-------------------------:|:-------------------------:
+![this](wrong.png)  |  ![this](upscaled_image.png)
 
 # IMGColorSwap
 A simple tool for swapping color channel values in pngs. Perfect for batch processing png assets with switched color channels.
